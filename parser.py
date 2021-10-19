@@ -33,8 +33,8 @@ for year in range(2015, 2022):
         for i in punctls:
             ps = ps.replace(i,"")
 
-            if (filename == "2015_2"):
-                print(ps)
+        if (filename == "2015_2"):
+            print(ps)
 
         psd = open("trump_tw/cleansed/" + filename + ".txt", "r+")
         psd.seek(0)
