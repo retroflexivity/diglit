@@ -1,7 +1,7 @@
 # import sys
 import re
 
-punctls = '“”".,!?;—–&'
+punctls = '“”".,!?;—–&()'
 
 for year in range(2015, 2022):
     for month in range(4):
@@ -22,11 +22,16 @@ for year in range(2015, 2022):
         ps = ps.replace("%", "percent")
         ps = ps.replace(": ", " ")
         ps = ps.replace(":\n", "\n")
+        ps = ps.replace("\n", " ")
+        ps = ps.replace("’", "'")
+        ps = ps.replace("\n", "")
 
-        usr = re.findall('@[&-z’]+', ps)
+        ps = ps.lower()
+
+        usr = re.findall('@[0-9A-Za-z]+', ps)
         ps = re.sub('@[&-z’]+', "", ps)
 
-        hst = re.findall('#[&-z’]+', ps)
+        hst = re.findall('#[0-9A-Za-z]+', ps)
         ps = re.sub('#[&-z’]+', "", ps)
 
 
@@ -42,14 +47,14 @@ for year in range(2015, 2022):
         psd.truncate()
         psd.close()
 
-        usrd = open("trump_tw/hashtags/" + filename + ".txt", "r+")
+        usrd = open("trump_tw/users/" + filename + ".txt", "r+")
         usrd.seek(0)
-        for i in hst:
+        for i in usr:
             usrd.write(i + "\n")
         usrd.truncate()
         usrd.close()
 
-        hstd = open("trump_tw/users/" + filename + ".txt", "r+")
+        hstd = open("trump_tw/hashtags/" + filename + ".txt", "r+")
         hstd.seek(0)
         for i in hst:
             hstd.write(i + "\n")
