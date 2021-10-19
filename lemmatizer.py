@@ -3,7 +3,7 @@ import sys
 
 doc = open(sys.argv[1], "r")
 text = doc.read()
-doc.close
+doc.close()
 
 m = Mystem()
 text = ''.join(m.lemmatize(text))
