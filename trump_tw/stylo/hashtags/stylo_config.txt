@@ -1,7 +1,7 @@
 corpus.format = "plain"
 corpus.lang = "English.all"
 analyzed.features = "w"
-ngram.size = 2
+ngram.size = 1
 preserve.case = FALSE
 encoding = "UTF-8"
 mfw.min = 100
